@@ -9,11 +9,4 @@ const stickerSchema = new Schema({
     created_at:{type: Date, default: Date.now}
 });
 
-module.exports = model('Sticker', StickerSchema)
-
-const userSchema = new Schema({
-    email: {type:String},
-    password: {type:String}
-});
-
-module.exports = model('User', userSchema);
+module.exports = model('Sticker', stickerSchema);
