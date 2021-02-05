@@ -4,6 +4,8 @@ const app = express();
 
 require('./database');
 
+app.use(express.json());
+
 //Rutas
 app.use('/api', require('./routes/routerUser'));
 app.use('/api', require('./routes/stickerRoute'));
