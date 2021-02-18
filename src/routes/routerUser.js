@@ -6,17 +6,21 @@ const user = require('../models/userModel');
 
 const jwt = require('jsonwebtoken');
 
-router.get('/user', (req, res)=> res.send("hola mundo"));
+router.get('/user', (req, res)=> { 
+    res.send("hola mundo")
+    });
+
 
 router.post('/singUp', async (req, res)=>{
   
-    const {email, password} = req.body;
-    const newUser = new user({email, password});
+    const {nombre, email, telefono, password, confirmacion} = req.body;
+    const newUser = new user({nombre, email, telefono, password, confirmacion});
     await newUser.save();
+
 
     const token = jwt.sign({_id: newUser._id}, 'secretkey');
 
-    res.status(200).json({token});
+    res.status(200).json({token, newUser});
 
 });
 
